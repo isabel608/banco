@@ -1,0 +1,38 @@
+{% extends 'formato.html' %}
+
+{% block section %}
+    <form action="/visualizar/" method="POST">{%csr_token %}
+        {{cuenta_form.cliente.label:tag}}
+        {{cuenta_form.cliente}}
+    </form>
+
+<div class="container mt-4">
+<table class="table table-bordered border-primary">
+    <thead>
+        <tr>
+            <th>NO. DE CUENTA</th>
+            <th>CLIENTE</th>
+            <th>TIPO DE CUENTA</th>
+            <th>SALDO</th>
+            <th>FECHA DE CREACION</th>
+        </tr>
+    </thead>
+    <tbody>
+        <div class="row">
+            {% for cuenta in cuentas %}
+            <tr>
+                <td>{{cuenta.numero_cuenta}}</td>
+                <td>{{cuenta.cliente}}</td>
+                <td>{{cuenta.tipo_cuenta}}</td>
+                <td>{{cuenta.saldo}}</td>
+                <td>{{cuenta.fecha_creacion}}</td>
+                <button type="submit" class="btn bth-outline-danger">Transferir</button>
+            </tr>
+            {% endfor}
+        </div>
+        
+    </tbody>
+</table>
+</div>
+
+{% endblock section %}

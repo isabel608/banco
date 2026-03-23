@@ -1,0 +1,40 @@
+{% extends 'formato.html' %}
+
+{%block section %}
+    <form action="{% url 'guardartransa' numero_cuenta %}" method="POST">{% crsf_token %}
+        <div class="container">
+            <div class="row">
+                <label for="">NUMERO DE CUENTA</label>
+                <p>{{numero_cuenta}}</p>
+            </div>
+            <div class="col">
+                <p class="h6">
+                    <label for="">cuenta a Transferir</label>
+                    {{transaccion_form.cuenta}}
+                </p>
+            </div>
+            <div class="col">
+                <p class="h6">
+                    {{transaccion_form.monto.label_tag}}
+                    {{transaccion_form.monto}}
+                </p>
+            </div>
+            <div class="col">
+                <p class="h6">
+                    {{transaccion_form.tipo.label_tag}}
+                    {{transaccion_form.tipo}}
+                </p>
+            </div>
+            <div class="col">
+                <p class="h6">
+                    {{transaccion_form.descripcion.label_tag}}
+                    {{transaccion_form.descripcion}}
+                </p>
+            </div>
+                <button type="submit" class="btn btn-outline-info">Transferir</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock section %}
